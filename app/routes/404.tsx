@@ -17,9 +17,17 @@ export default function PageNotFound() {
             textShadow="0 0 3px gray" 
             fontWeight="semibold"
             textAlign="center"
+            lineHeight="0.5"
           >
             404
-            <Span pl="5" fontWeight="normal" fontSize="4xl" fontFamily="mono">
+            <Span 
+              display={{ smDown: "block", md: "inline" }}
+              pl={{ smDown: "0", md: "5" }}
+              py={{ smDown: "12", md: "0" }}
+              fontWeight="normal" 
+              fontSize="4xl" 
+              fontFamily="mono"
+            >
               Not Found
             </Span>
           </Text>
