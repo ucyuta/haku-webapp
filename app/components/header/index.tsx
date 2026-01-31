@@ -1,60 +1,36 @@
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
-import { useHideOnScroll } from "app/components/hooks/hideOnScroll";
+import { Box, Button, ButtonGroup, Container, Flex, HStack, Text } from "@chakra-ui/react";
 import { ColorModeButton, useColorModeValue } from "app/components/ui/color-mode";
+import { RiLoginBoxLine } from "react-icons/ri";
 
 export default function Header() {
-  const show = useHideOnScroll({ threshold: 12, topAlwaysShow: 8 });
-
-  const glassBg = useColorModeValue(
-    "rgba(255,255,255,0.06)",
-    "rgba(0,0,0,0.06)"
-  );
-
-  const border = useColorModeValue(
-    "rgba(0,0,0,0.05)",
-    "rgba(255,255,255,0.05)"
-  );
-
-  const logoText = useColorModeValue(
-    "rgba(17,17,17,0.85)",
-    "rgba(255,255,255,0.85)"
-  );
-
-  const iconBg = useColorModeValue(
-    "rgba(0,0,0,0.035)",
-    "rgba(255,255,255,0.06)"
-  );
-  const iconBorder = useColorModeValue(
-    "rgba(0,0,0,0.05)",
-    "rgba(255,255,255,0.07)"
-  );
-
   return (
     <Box
+      as="header"
       position="sticky"
       top="0"
-      zIndex="1000"
-      transform={show ? "translateY(0)" : "translateY(-110%)"}
-      opacity={show ? 1 : 0}
-      transition="transform 200ms ease, opacity 200ms ease"
-      bg={glassBg}
-      backdropFilter="blur(14px) saturate(1.05)"
-      borderBottom={`1px solid ${border}`}
-      boxShadow={useColorModeValue(
-        "inset 0 1px 0 rgba(255,255,255,0.35)",
-        "inset 0 1px 0 rgba(255,255,255,0.06)"
-      )}
+      zIndex="docked"
+      py="2"
+      // hideBelow="sm"
     >
-      <Flex align="center" gap="12px" px="16px" py="12px" justify="space-between">
-        <Flex gap="3">
+      <Container
+        centerContent
+        flexDir="row"
+        justifyContent="space-between"
+        gap="2"
+        bg="bg/80"
+        borderWidth="1px"
+        rounded="md"
+        shadow="md"
+        backdropFilter="blur({blurs.md})"
+        px="6"
+        py="2"
+      >
+        <HStack
+          as="nav"
+          // p="2.5"
+          // gap={["2", "4"]}
+        >
           <Box
-            boxSize="28px"
-            borderRadius="10px"
-            bg={iconBg}
-            border={`1px solid ${iconBorder}`}
-          />
-          <Box
-            color={logoText}
             fontFamily="'Manrope', system-ui, sans-serif"
             fontWeight="800"
             fontSize="24px"
@@ -63,16 +39,19 @@ export default function Header() {
           >
             Haku
           </Box>
-        </Flex>
-        <Flex gap="3">
-          <Button variant="outline" size="md">
-            <Text fontWeight="bold">
+        </HStack>
+        <ButtonGroup
+        
+        >
+          <Button variant="ghost" size="md">
+            {/* <Text fontWeight="bold">
               Log in
-            </Text>
+            </Text> */}
+            <RiLoginBoxLine />
           </Button>
-          <ColorModeButton />
-        </Flex>
-      </Flex>
+          <ColorModeButton size="md" />
+        </ButtonGroup>
+      </Container>
     </Box>
   );
 }

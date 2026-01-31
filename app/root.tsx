@@ -13,7 +13,6 @@ import Header from "./components/header";
 
 import { Box } from "@chakra-ui/react";
 import { useColorModeValue } from "app/components/ui/color-mode";
-import { backgroundTheme } from "app/theme/background";
 
 export const meta: Route.MetaFunction = () => [{ title: "Hello, React!" }];
 
@@ -27,84 +26,32 @@ export const links: Route.LinksFunction = () => [
   {
     rel: "stylesheet",
     href:
-      "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
-  {
-    rel: "stylesheet",
-    href:
-      "https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+JP:wght@100..900&family=Pixelify+Sans:wght@400..700&display=swap",
-  },
-  {
-    rel: "stylesheet",
-    href:
-      "https://fonts.googleapis.com/css2?family=DotGothic16&family=Manrope:wght@200..800&family=Noto+Sans+JP:wght@100..900&family=Pixelify+Sans:wght@400..700&display=swap",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=DotGothic16&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200..800&family=Noto+Sans+JP:wght@100..900&family=Pixelify+Sans:wght@400..700&display=swap"
+      "https://fonts.googleapis.com/css2?family=DotGothic16&family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200..800&family=Noto+Sans+JP:wght@100..900&family=Pixelify+Sans:wght@400..700&display=swap"
   }
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja" suppressHydrationWarning>
-      <head>
+      <head suppressHydrationWarning>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body suppressHydrationWarning>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+      <body>
+        <Provider>
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+        </Provider>
       </body>
     </html>
   );
 }
 
-function AppShell({ children }: { children: React.ReactNode }) {
-  const t = useColorModeValue(backgroundTheme.light, backgroundTheme.dark);
-
-  return (
-    <Box
-      minH="100vh"
-      position="relative"
-      bg={t.base}
-      overflow="hidden"
-      _before={{
-        content: '""',
-        position: "fixed",
-        inset: 0,
-        pointerEvents: "none",
-        bg: `radial-gradient(900px 500px at 15% -20%, ${t.glow}, transparent 60%)`,
-        zIndex: 0,
-      }}
-      _after={{
-        content: '""',
-        position: "fixed",
-        inset: 0,
-        pointerEvents: "none",
-        bg: `linear-gradient(180deg, ${t.linearFrom}, ${t.linearTo})`,
-        zIndex: 0,
-      }}
-    >
-      <Box position="relative" zIndex={1}>
-        {children}
-      </Box>
-    </Box>
-  );
-}
-
 export default function App() {
-  return (
-    <Provider>
-      <AppShell>
-        <Header />
-        <Outlet />
-      </AppShell>
-    </Provider>
-  );
+  return <Outlet />;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
