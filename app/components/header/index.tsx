@@ -1,6 +1,7 @@
 import { Box, Button, ButtonGroup, Container, Flex, HStack, Text } from "@chakra-ui/react";
 import { ColorModeButton, useColorModeValue } from "app/components/ui/color-mode";
 import { RiLoginBoxLine } from "react-icons/ri";
+import { Link as RLink } from "react-router";
 
 export default function Header() {
   return (
@@ -27,9 +28,8 @@ export default function Header() {
       >
         <HStack
           as="nav"
-          // p="2.5"
-          // gap={["2", "4"]}
         >
+        <RLink to="/" prefetch="intent">
           <Box
             fontFamily="'Manrope', system-ui, sans-serif"
             fontWeight="800"
@@ -39,6 +39,7 @@ export default function Header() {
           >
             Haku
           </Box>
+        </RLink>
         </HStack>
         <ButtonGroup
         

@@ -4,25 +4,29 @@
   "type": "module",
   "scripts": {
     "build": "react-router build",
-    "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
+    "dev": "cross-env NODE_ENV=development tsx app/api/server.ts",
+    "start": "cross-env NODE_ENV=production node build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "clean": "yarn cache clean"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.31.0",
     "@emotion/react": "^11.14.0",
+    "@react-router/express": "^7.13.0",
     "@react-router/fs-routes": "^7.12.0",
     "@react-router/node": "^7.12.0",
     "@react-router/serve": "^7.12.0",
+    "dotenv": "^17.2.3",
     "eslint": "^9.39.2",
     "express": "^5.2.1",
     "isbot": "^5.1.31",
     "next-themes": "^0.4.6",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
+    "react-hook-form": "^7.71.1",
     "react-icons": "^5.5.0",
-    "react-router": "^7.12.0"
+    "react-router": "^7.12.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@react-router/dev": "^7.12.0",
@@ -31,7 +35,9 @@
     "@types/node": "^22",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "cross-env": "^10.1.0",
     "tailwindcss": "^4.1.13",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.2",
     "vite": "^7.1.7",
     "vite-tsconfig-paths": "^5.1.4"
