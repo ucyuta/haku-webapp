@@ -9,3 +9,5 @@ Dockerfile
 # React Router
 /.react-router/
 /build/
+
+.zed/settings.json
