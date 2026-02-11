@@ -2,10 +2,13 @@
 .env
 .env.*
 !.env.example
-/node_modules/
+node_modules
 .dockerignore
 Dockerfile
+docker-compose
+coding_guildlines.md
+build
+dist
 
 # React Router
-/.react-router/
-/build/
+.react-router

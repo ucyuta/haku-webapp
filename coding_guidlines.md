@@ -1,5 +1,7 @@
 # Haku: WebApp (working title)
 
+(ほぼ自分用)
+
 ## ファイル名
 
 1. Viewはローワーキャメルケースを使用する（例：appDocuments.tsx）
