@@ -1,49 +1,35 @@
 {
-  "name": "haku-webapp",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "react-router build",
-    "dev": "cross-env NODE_ENV=development tsx app/api/server.ts",
-    "start": "cross-env NODE_ENV=production node build/server/index.js",
-    "typecheck": "react-router typegen && tsc",
-    "clean": "yarn cache clean",
-    "format": "biome format --write",
-    "lint": "biome lint",
-    "check": "biome check",
-    "check:fix": "biome check --write --unsafe"
-  },
-  "dependencies": {
-    "@chakra-ui/react": "^3.31.0",
-    "@emotion/react": "^11.14.0",
-    "@react-router/express": "^7.13.0",
-    "@react-router/fs-routes": "^7.12.0",
-    "@react-router/node": "^7.12.0",
-    "@react-router/serve": "^7.12.0",
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "isbot": "^5.1.31",
-    "next-themes": "^0.4.6",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "react-hook-form": "^7.71.1",
-    "react-icons": "^5.5.0",
-    "react-router": "^7.12.0",
-    "zod": "^4.3.6"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.3.13",
-    "@react-router/dev": "^7.12.0",
-    "@tailwindcss/vite": "^4.1.13",
-    "@types/express": "^5.0.6",
-    "@types/node": "^22",
-    "@types/react": "^19.2.7",
-    "@types/react-dom": "^19.2.3",
-    "cross-env": "^10.1.0",
-    "tailwindcss": "^4.1.13",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.2",
-    "vite": "^7.1.7",
-    "vite-tsconfig-paths": "^5.1.4"
-  }
+	"name": "@haku/webapp-monorepo",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"client": "pnpm -F 'client'",
+		"server": "pnpm -F 'server'",
+		"format": "biome format --write",
+		"lint": "biome lint",
+		"check": "biome check",
+		"check:fix": "biome check --write --unsafe"
+	},
+	"engines": {
+		"pnpm": "10.29.2",
+		"npm": "PNPM TUKAE"
+	},
+	"packageManager": "pnpm@10.29.2+sha512.bef43fa759d91fd2da4b319a5a0d13ef7a45bb985a3d7342058470f9d2051a3ba8674e629672654686ef9443ad13a82da2beb9eeb3e0221c87b8154fff9d74b8",
+	"dependencies": {
+		"dotenv": "^17.2.3",
+		"eslint": "^9.39.2",
+		"next-themes": "^0.4.6",
+		"react-icons": "^5.5.0",
+		"zod": "^4.3.6"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.3.13",
+		"cross-env": "^10.1.0",
+		"typescript": "^5.9.2"
+	},
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "https://github.com/ucyuta/haku-webapp.git",
+	"author": "ucyuta <yuta@yutasaba.com>",
+	"license": "MIT"
 }
